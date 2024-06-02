@@ -1,0 +1,291 @@
+   1               		.file	"myFunktions.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	fahren2
+  18               	fahren2:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* epilogue start */
+  24               	.LM2:
+  25 0000 0895      		ret
+  26               	.LFE3:
+  28               	.global	linearisierungAD
+  30               	linearisierungAD:
+  31               	.LFB4:
+  32               	.LM3:
+  33               	.LVL0:
+  34               	/* prologue: function */
+  35               	/* frame size = 0 */
+  36 0002 AC01      		movw r20,r24
+  37 0004 262F      		mov r18,r22
+  38               	.LM4:
+  39 0006 8FEF      		ldi r24,hi8(-15)
+  40 0008 413F      		cpi r20,lo8(-15)
+  41 000a 5807      		cpc r21,r24
+  42               	.LVL1:
+  43 000c 01F4      		brne .L4
+  44               	.LVL2:
+  45 000e 46E9      		ldi r20,lo8(150)
+  46 0010 50E0      		ldi r21,hi8(150)
+  47               	.LVL3:
+  48 0012 00C0      		rjmp .L5
+  49               	.LVL4:
+  50               	.L4:
+  51               	.LM5:
+  52 0014 415F      		subi r20,lo8(-(15))
+  53 0016 5F4F      		sbci r21,hi8(-(15))
+  54 0018 81E6      		ldi r24,lo8(23649)
+  55 001a 9CE5      		ldi r25,hi8(23649)
+  56 001c BA01      		movw r22,r20
+  57 001e 0E94 0000 		call __udivmodhi4
+  58               	.LM6:
+  59 0022 30E0      		ldi r19,lo8(0)
+  60               	.LVL5:
+  61 0024 269F      		mul r18,r22
+  62 0026 A001      		movw r20,r0
+  63 0028 279F      		mul r18,r23
+  64 002a 500D      		add r21,r0
+  65 002c 369F      		mul r19,r22
+  66 002e 500D      		add r21,r0
+  67 0030 1124      		clr r1
+  68               	.LVL6:
+  69               	.L5:
+  70 0032 CA01      		movw r24,r20
+  71 0034 64E6      		ldi r22,lo8(100)
+  72 0036 70E0      		ldi r23,hi8(100)
+  73 0038 0E94 0000 		call __udivmodhi4
+  74 003c CB01      		movw r24,r22
+  75               	/* epilogue start */
+  76               	.LM7:
+  77 003e 0895      		ret
+  78               	.LFE4:
+  80               	.global	ro
+  82               	ro:
+  83               	.LFB5:
+  84               	.LM8:
+  85               	/* prologue: function */
+  86               	/* frame size = 0 */
+  87               	.LM9:
+  88 0040 8091 0000 		lds r24,y
+  89 0044 9091 0000 		lds r25,y+1
+  90               	/* epilogue start */
+  91 0048 0895      		ret
+  92               	.LFE5:
+  94               	.global	pReglerServoRechts
+  96               	pReglerServoRechts:
+  97               	.LFB6:
+  98               	.LM10:
+  99               	/* prologue: function */
+ 100               	/* frame size = 0 */
+ 101               	.LM11:
+ 102 004a 2091 0000 		lds r18,abstandrechts
+ 103 004e 3091 0000 		lds r19,(abstandrechts)+1
+ 104               	.LVL7:
+ 105 0052 8091 0000 		lds r24,abstandlinks
+ 106 0056 9091 0000 		lds r25,(abstandlinks)+1
+ 107 005a 281B      		sub r18,r24
+ 108 005c 390B      		sbc r19,r25
+ 109 005e 3093 0000 		sts (e)+1,r19
+ 110 0062 2093 0000 		sts e,r18
+ 111               	.LM12:
+ 112 0066 8091 0000 		lds r24,m1
+ 113 006a 9091 0000 		lds r25,(m1)+1
+ 114 006e 6091 0000 		lds r22,m2
+ 115 0072 7091 0000 		lds r23,(m2)+1
+ 116 0076 AC01      		movw r20,r24
+ 117 0078 249F      		mul r18,r20
+ 118 007a C001      		movw r24,r0
+ 119 007c 259F      		mul r18,r21
+ 120 007e 900D      		add r25,r0
+ 121 0080 349F      		mul r19,r20
+ 122 0082 900D      		add r25,r0
+ 123 0084 1124      		clr r1
+ 124 0086 0E94 0000 		call __divmodhi4
+ 125 008a CB01      		movw r24,r22
+ 126 008c 6093 0000 		sts y,r22
+ 127 0090 9093 0000 		sts y+1,r25
+ 128               	.LM13:
+ 129 0094 6093 0000 		sts ausgabe3,r22
+ 130 0098 9093 0000 		sts ausgabe3+1,r25
+ 131               	/* epilogue start */
+ 132               	.LM14:
+ 133 009c 0895      		ret
+ 134               	.LFE6:
+ 136               	.global	akkuSpannungPruefen
+ 138               	akkuSpannungPruefen:
+ 139               	.LFB7:
+ 140               	.LM15:
+ 141               	.LVL8:
+ 142               	/* prologue: function */
+ 143               	/* frame size = 0 */
+ 144               	/* epilogue start */
+ 145               	.LM16:
+ 146 009e 0895      		ret
+ 147               	.LFE7:
+ 149               	.global	ledSchalterTest
+ 151               	ledSchalterTest:
+ 152               	.LFB8:
+ 153               	.LM17:
+ 154               	/* prologue: function */
+ 155               	/* frame size = 0 */
+ 156               	/* epilogue start */
+ 157               	.LM18:
+ 158 00a0 0895      		ret
+ 159               	.LFE8:
+ 161               	.global	fahren1
+ 163               	fahren1:
+ 164               	.LFB2:
+ 165               	.LM19:
+ 166               	/* prologue: function */
+ 167               	/* frame size = 0 */
+ 168               	.LM20:
+ 169 00a2 8091 0000 		lds r24,abstandvorne
+ 170 00a6 9091 0000 		lds r25,(abstandvorne)+1
+ 171 00aa 8E97      		sbiw r24,46
+ 172 00ac 00F4      		brsh .L16
+ 173               	.LM21:
+ 174 00ae 8EEE      		ldi r24,lo8(-18)
+ 175 00b0 9FEF      		ldi r25,hi8(-18)
+ 176 00b2 0E94 0000 		call fahr
+ 177 00b6 81E0      		ldi r24,lo8(1)
+ 178 00b8 90E0      		ldi r25,hi8(1)
+ 179               	.LVL9:
+ 180 00ba 00C0      		rjmp .L17
+ 181               	.LVL10:
+ 182               	.L16:
+ 183               	.LM22:
+ 184 00bc 82E1      		ldi r24,lo8(18)
+ 185 00be 90E0      		ldi r25,hi8(18)
+ 186 00c0 0E94 0000 		call fahr
+ 187 00c4 82E0      		ldi r24,lo8(2)
+ 188 00c6 90E0      		ldi r25,hi8(2)
+ 189               	.LVL11:
+ 190               	.L17:
+ 191               	.LM23:
+ 192 00c8 9093 0000 		sts (ausgabe2)+1,r25
+ 193 00cc 8093 0000 		sts ausgabe2,r24
+ 194               	.LM24:
+ 195 00d0 0197      		sbiw r24,1
+ 196 00d2 01F4      		brne .L18
+ 197               	.LM25:
+ 198 00d4 0E94 0000 		call getFahr
+ 199               	.LVL12:
+ 200 00d8 87FF      		sbrs r24,7
+ 201 00da 00C0      		rjmp .L24
+ 202 00dc 2091 0000 		lds r18,abstandlinks
+ 203 00e0 3091 0000 		lds r19,(abstandlinks)+1
+ 204 00e4 8091 0000 		lds r24,abstandrechts
+ 205 00e8 9091 0000 		lds r25,(abstandrechts)+1
+ 206 00ec 8217      		cp r24,r18
+ 207 00ee 9307      		cpc r25,r19
+ 208 00f0 00F0      		brlo .L24
+ 209 00f2 00C0      		rjmp .L23
+ 210               	.LVL13:
+ 211               	.L18:
+ 212               	.LM26:
+ 213 00f4 0E94 0000 		call getFahr
+ 214               	.LVL14:
+ 215 00f8 1816      		cp __zero_reg__,r24
+ 216 00fa 04F4      		brge .L21
+ 217 00fc 8091 0000 		lds r24,abstandlinks
+ 218 0100 9091 0000 		lds r25,(abstandlinks)+1
+ 219 0104 803A      		cpi r24,160
+ 220 0106 9105      		cpc r25,__zero_reg__
+ 221 0108 00F4      		brsh .L21
+ 222 010a 8091 0000 		lds r24,abstandrechts
+ 223 010e 9091 0000 		lds r25,(abstandrechts)+1
+ 224 0112 803A      		cpi r24,160
+ 225 0114 9105      		cpc r25,__zero_reg__
+ 226 0116 00F4      		brsh .L21
+ 227               	.LM27:
+ 228 0118 0E94 0000 		call pReglerServoRechts
+ 229               	.LM28:
+ 230 011c 8091 0000 		lds r24,y
+ 231 0120 9091 0000 		lds r25,(y)+1
+ 232 0124 00C0      		rjmp .L26
+ 233               	.L21:
+ 234               	.LM29:
+ 235 0126 8091 0000 		lds r24,abstandlinks
+ 236 012a 9091 0000 		lds r25,(abstandlinks)+1
+ 237 012e 2091 0000 		lds r18,abstandrechts
+ 238 0132 3091 0000 		lds r19,(abstandrechts)+1
+ 239 0136 813A      		cpi r24,161
+ 240 0138 9105      		cpc r25,__zero_reg__
+ 241 013a 00F0      		brlo .L22
+ 242 013c 213A      		cpi r18,161
+ 243 013e 3105      		cpc r19,__zero_reg__
+ 244 0140 00F0      		brlo .L23
+ 245               	.LM30:
+ 246 0142 80E0      		ldi r24,lo8(0)
+ 247 0144 90E0      		ldi r25,hi8(0)
+ 248 0146 00C0      		rjmp .L26
+ 249               	.L22:
+ 250               	.LM31:
+ 251 0148 213A      		cpi r18,161
+ 252 014a 3105      		cpc r19,__zero_reg__
+ 253 014c 00F4      		brsh .L24
+ 254 014e 0895      		ret
+ 255               	.L23:
+ 256               	.LM32:
+ 257 0150 8AE0      		ldi r24,lo8(10)
+ 258 0152 90E0      		ldi r25,hi8(10)
+ 259 0154 00C0      		rjmp .L26
+ 260               	.L24:
+ 261               	.LM33:
+ 262 0156 86EF      		ldi r24,lo8(-10)
+ 263 0158 9FEF      		ldi r25,hi8(-10)
+ 264               	.L26:
+ 265 015a 0E94 0000 		call servo
+ 266 015e 0895      		ret
+ 267               	.LFE2:
+ 269               	.global	histerese
+ 270               	.global	histerese
+ 271               		.section .bss
+ 274               	histerese:
+ 275 0000 0000      		.skip 2,0
+ 276               	.global	ereignisBremsen
+ 277               	.global	ereignisBremsen
+ 280               	ereignisBremsen:
+ 281 0002 00        		.skip 1,0
+ 354               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 myFunktions.c
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:2      *ABS*:0000003f __SREG__
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:3      *ABS*:0000003e __SP_H__
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:4      *ABS*:0000003d __SP_L__
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:5      *ABS*:00000034 __CCP__
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:18     .text:00000000 fahren2
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:30     .text:00000002 linearisierungAD
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:82     .text:00000040 ro
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:96     .text:0000004a pReglerServoRechts
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:138    .text:0000009e akkuSpannungPruefen
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:151    .text:000000a0 ledSchalterTest
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:163    .text:000000a2 fahren1
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:274    .bss:00000000 histerese
+C:\Users\MACHMA~1\AppData\Local\Temp/cclpqUmb.s:280    .bss:00000002 ereignisBremsen
+
+UNDEFINED SYMBOLS
+__udivmodhi4
+y
+abstandrechts
+abstandlinks
+e
+m1
+m2
+__divmodhi4
+ausgabe3
+abstandvorne
+fahr
+ausgabe2
+getFahr
+servo
+__do_clear_bss

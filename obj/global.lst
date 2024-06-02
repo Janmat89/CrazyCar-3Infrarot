@@ -1,0 +1,374 @@
+   1               		.file	"global.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	abtastzeit
+  17               	.global	abtastzeit
+  18               		.section .bss
+  21               	abtastzeit:
+  22 0000 0000      		.skip 2,0
+  23               	.global	abtastzeitMAX
+  24               	.global	abtastzeitMAX
+  27               	abtastzeitMAX:
+  28 0002 0000      		.skip 2,0
+  29               	.global	abtastzeitZyklus
+  30               	.global	abtastzeitZyklus
+  33               	abtastzeitZyklus:
+  34 0004 0000      		.skip 2,0
+  35               	.global	OutL
+  36               	.global	OutL
+  39               	OutL:
+  40 0006 0000      		.skip 2,0
+  41               	.global	OutR
+  42               	.global	OutR
+  45               	OutR:
+  46 0008 0000      		.skip 2,0
+  47               	.global	OutV
+  48               	.global	OutV
+  51               	OutV:
+  52 000a 0000      		.skip 2,0
+  53               	.global	OutS
+  54               	.global	OutS
+  57               	OutS:
+  58 000c 0000      		.skip 2,0
+  59               	.global	OutFR
+  60               	.global	OutFR
+  63               	OutFR:
+  64 000e 0000      		.skip 2,0
+  65               	.global	OutHL
+  66               	.global	OutHL
+  69               	OutHL:
+  70 0010 0000      		.skip 2,0
+  71               	.global	OutHR
+  72               	.global	OutHR
+  75               	OutHR:
+  76 0012 0000      		.skip 2,0
+  77               	.global	OutHV
+  78               	.global	OutHV
+  81               	OutHV:
+  82 0014 0000      		.skip 2,0
+  83               	.global	OutHS
+  84               	.global	OutHS
+  87               	OutHS:
+  88 0016 0000      		.skip 2,0
+  89               	.global	OutHFR
+  90               	.global	OutHFR
+  93               	OutHFR:
+  94 0018 0000      		.skip 2,0
+  95               	.global	OutHH1
+  96               	.global	OutHH1
+  99               	OutHH1:
+ 100 001a 0000      		.skip 2,0
+ 101               	.global	OutHH2
+ 102               	.global	OutHH2
+ 105               	OutHH2:
+ 106 001c 0000      		.skip 2,0
+ 107               	.global	OutHH3
+ 108               	.global	OutHH3
+ 111               	OutHH3:
+ 112 001e 0000      		.skip 2,0
+ 113               	.global	OutH1
+ 114               	.global	OutH1
+ 117               	OutH1:
+ 118 0020 0000      		.skip 2,0
+ 119               	.global	OutH2
+ 120               	.global	OutH2
+ 123               	OutH2:
+ 124 0022 0000      		.skip 2,0
+ 125               	.global	OutH3
+ 126               	.global	OutH3
+ 129               	OutH3:
+ 130 0024 0000      		.skip 2,0
+ 131               	.global	h1
+ 132               	.global	h1
+ 135               	h1:
+ 136 0026 0000      		.skip 2,0
+ 137               	.global	h2
+ 138               	.global	h2
+ 141               	h2:
+ 142 0028 0000      		.skip 2,0
+ 143               	.global	h3
+ 144               	.global	h3
+ 147               	h3:
+ 148 002a 0000      		.skip 2,0
+ 149               	.global	hmod
+ 150               		.data
+ 153               	hmod:
+ 154 0000 6F        		.byte	111
+ 155               	.global	j
+ 156               	.global	j
+ 157               		.section .bss
+ 160               	j:
+ 161 002c 00        		.skip 1,0
+ 162               	.global	logOnOff
+ 163               	.global	logOnOff
+ 166               	logOnOff:
+ 167 002d 00        		.skip 1,0
+ 168               	.global	logOffAus
+ 169               	.global	logOffAus
+ 172               	logOffAus:
+ 173 002e 00        		.skip 1,0
+ 174               	.global	logCmOnOff
+ 175               	.global	logCmOnOff
+ 178               	logCmOnOff:
+ 179 002f 00        		.skip 1,0
+ 180               	.global	history
+ 181               	.global	history
+ 184               	history:
+ 185 0030 00        		.skip 1,0
+ 186               	.global	logBTOnOff
+ 187               	.global	logBTOnOff
+ 190               	logBTOnOff:
+ 191 0031 00        		.skip 1,0
+ 192               	.global	logStart
+ 193               	.global	logStart
+ 196               	logStart:
+ 197 0032 00        		.skip 1,0
+ 198               	.global	hspStart
+ 199               	.global	hspStart
+ 202               	hspStart:
+ 203 0033 00        		.skip 1,0
+ 204               	.global	anzahl
+ 205               		.data
+ 208               	anzahl:
+ 209 0001 09        		.byte	9
+ 210               	.global	mod
+ 211               	.global	mod
+ 212               		.section .bss
+ 215               	mod:
+ 216 0034 00        		.skip 1,0
+ 217               	.global	logMod
+ 218               	.global	logMod
+ 221               	logMod:
+ 222 0035 00        		.skip 1,0
+ 223               	.global	hisDepth
+ 224               		.data
+ 227               	hisDepth:
+ 228 0002 3C        		.byte	60
+ 229               	.global	ausgabefaktor
+ 232               	ausgabefaktor:
+ 233 0003 02        		.byte	2
+ 234               	.global	kommand
+ 235               	.global	kommand
+ 236               		.section .bss
+ 239               	kommand:
+ 240 0036 0000      		.skip 2,0
+ 241               	.global	welcome
+ 242               		.data
+ 245               	welcome:
+ 246 0004 4343 2056 		.string	"CC V1.39 "
+ 246      312E 3339 
+ 246      2000 
+ 247               	.global	freeRAMText
+ 250               	freeRAMText:
+ 251 000e 6672 6565 		.string	"freeRAM"
+ 251      5241 4D00 
+ 252               	.global	abtastzeitMAXText
+ 255               	abtastzeitMAXText:
+ 256 0016 5A7A 4D61 		.string	"ZzMax"
+ 256      7800 
+ 257               	.global	akkuText
+ 260               	akkuText:
+ 261 001c 416B 6B75 		.string	"Akku"
+ 261      00
+ 262               	.global	gleichText
+ 265               	gleichText:
+ 266 0021 3D00      		.string	"="
+ 267               	.global	grosserText
+ 270               	grosserText:
+ 271 0023 3E00      		.string	">"
+ 272               	.global	kommandos
+ 275               	kommandos:
+ 276 0025 7300      		.string	"s"
+ 277 0027 0000      		.skip 2,0
+ 278 0029 6600      		.string	"f"
+ 279 002b 0000      		.skip 2,0
+ 280 002d 6C6F 6700 		.string	"log"
+ 281 0031 636D 00   		.string	"cm"
+ 282 0034 00        		.skip 1,0
+ 283 0035 6861 00   		.string	"ha"
+ 284 0038 00        		.skip 1,0
+ 285 0039 6873 00   		.string	"hs"
+ 286 003c 00        		.skip 1,0
+ 287 003d 6D6D 00   		.string	"mm"
+ 288 0040 00        		.skip 1,0
+ 289 0041 6274 00   		.string	"bt"
+ 290 0044 00        		.skip 1,0
+ 291 0045 6D79 00   		.string	"my"
+ 292 0048 00        		.skip 1,0
+ 293               	.global	modTEXT
+ 296               	modTEXT:
+ 297 0049 4D6F 6400 		.string	"Mod"
+ 298               	.global	myTEXT
+ 301               	myTEXT:
+ 302 004d 6D79 00   		.string	"my"
+ 303               	.global	tab
+ 306               	tab:
+ 307 0050 0900      		.string	"\t"
+ 308 0052 00        		.string	""
+ 309 0053 00        		.skip 1,0
+ 310               	.global	anText
+ 313               	anText:
+ 314 0054 0961 6E00 		.string	"\tan"
+ 315               	.global	ausText
+ 318               	ausText:
+ 319 0058 0961 7573 		.string	"\taus"
+ 319      00
+ 320               	.global	textF
+ 323               	textF:
+ 324 005d 756E 67FC 		.string	"ung\374ltig"
+ 324      6C74 6967 
+ 324      00
+ 325               	.global	textF1
+ 328               	textF1:
+ 329 0066 756E 67FC 		.string	"ung\374ltig_1"
+ 329      6C74 6967 
+ 329      5F31 00
+ 330               	.global	m1
+ 333               	m1:
+ 334 0071 4300      		.word	67
+ 335               	.global	m2
+ 338               	m2:
+ 339 0073 6400      		.word	100
+ 340               	.global	ausgabe1
+ 341               	.global	ausgabe1
+ 342               		.section .bss
+ 345               	ausgabe1:
+ 346 0038 0000      		.skip 2,0
+ 347               	.global	ausgabe2
+ 348               	.global	ausgabe2
+ 351               	ausgabe2:
+ 352 003a 0000      		.skip 2,0
+ 353               	.global	ausgabe3
+ 354               	.global	ausgabe3
+ 357               	ausgabe3:
+ 358 003c 0000      		.skip 2,0
+ 359               	.global	ausgabeT
+ 360               		.data
+ 363               	ausgabeT:
+ 364 0075 2000      		.string	" "
+ 365 0077 0000 0000 		.skip 13,0
+ 365      0000 0000 
+ 365      0000 0000 
+ 365      00
+ 366               		.comm abstandlinks,2,1
+ 367               		.comm abstandrechts,2,1
+ 368               		.comm abstandvorne,2,1
+ 369               		.comm analogwertAkku,2,1
+ 370               		.comm analogwertL,2,1
+ 371               		.comm analogwertR,2,1
+ 372               		.comm analogwertV,2,1
+ 373               		.comm eingabe,25,1
+ 374               		.comm befehl,1,1
+ 375               		.comm texth,25,1
+ 376               		.comm wert,2,1
+ 377               		.comm zeichen,1,1
+ 378               		.comm servoML,2,1
+ 379               		.comm servoG,2,1
+ 380               		.comm servoMR,2,1
+ 381               		.comm maxFahr,1,1
+ 382               		.comm e,2,1
+ 383               		.comm y,2,1
+ 384               		.comm convertUint,2,1
+ 385               		.comm convertInt,2,1
+ 386               		.comm mya,2,1
+ 387               		.comm myb,2,1
+ 388               		.comm myc,2,1
+ 389               		.text
+ 390               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 global.c
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:2      *ABS*:0000003f __SREG__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:5      *ABS*:00000034 __CCP__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:21     .bss:00000000 abtastzeit
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:27     .bss:00000002 abtastzeitMAX
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:33     .bss:00000004 abtastzeitZyklus
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:39     .bss:00000006 OutL
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:45     .bss:00000008 OutR
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:51     .bss:0000000a OutV
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:57     .bss:0000000c OutS
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:63     .bss:0000000e OutFR
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:69     .bss:00000010 OutHL
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:75     .bss:00000012 OutHR
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:81     .bss:00000014 OutHV
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:87     .bss:00000016 OutHS
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:93     .bss:00000018 OutHFR
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:99     .bss:0000001a OutHH1
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:105    .bss:0000001c OutHH2
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:111    .bss:0000001e OutHH3
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:117    .bss:00000020 OutH1
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:123    .bss:00000022 OutH2
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:129    .bss:00000024 OutH3
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:135    .bss:00000026 h1
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:141    .bss:00000028 h2
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:147    .bss:0000002a h3
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:153    .data:00000000 hmod
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:160    .bss:0000002c j
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:166    .bss:0000002d logOnOff
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:172    .bss:0000002e logOffAus
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:178    .bss:0000002f logCmOnOff
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:184    .bss:00000030 history
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:190    .bss:00000031 logBTOnOff
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:196    .bss:00000032 logStart
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:202    .bss:00000033 hspStart
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:208    .data:00000001 anzahl
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:215    .bss:00000034 mod
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:221    .bss:00000035 logMod
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:227    .data:00000002 hisDepth
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:232    .data:00000003 ausgabefaktor
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:239    .bss:00000036 kommand
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:245    .data:00000004 welcome
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:250    .data:0000000e freeRAMText
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:255    .data:00000016 abtastzeitMAXText
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:260    .data:0000001c akkuText
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:265    .data:00000021 gleichText
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:270    .data:00000023 grosserText
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:275    .data:00000025 kommandos
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:296    .data:00000049 modTEXT
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:301    .data:0000004d myTEXT
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:306    .data:00000050 tab
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:313    .data:00000054 anText
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:318    .data:00000058 ausText
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:323    .data:0000005d textF
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:328    .data:00000066 textF1
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:333    .data:00000071 m1
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:338    .data:00000073 m2
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:345    .bss:00000038 ausgabe1
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:351    .bss:0000003a ausgabe2
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:357    .bss:0000003c ausgabe3
+C:\Users\MACHMA~1\AppData\Local\Temp/ccIb9itQ.s:363    .data:00000075 ausgabeT
+                            *COM*:00000002 abstandlinks
+                            *COM*:00000002 abstandrechts
+                            *COM*:00000002 abstandvorne
+                            *COM*:00000002 analogwertAkku
+                            *COM*:00000002 analogwertL
+                            *COM*:00000002 analogwertR
+                            *COM*:00000002 analogwertV
+                            *COM*:00000019 eingabe
+                            *COM*:00000001 befehl
+                            *COM*:00000019 texth
+                            *COM*:00000002 wert
+                            *COM*:00000001 zeichen
+                            *COM*:00000002 servoML
+                            *COM*:00000002 servoG
+                            *COM*:00000002 servoMR
+                            *COM*:00000001 maxFahr
+                            *COM*:00000002 e
+                            *COM*:00000002 y
+                            *COM*:00000002 convertUint
+                            *COM*:00000002 convertInt
+                            *COM*:00000002 mya
+                            *COM*:00000002 myb
+                            *COM*:00000002 myc
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

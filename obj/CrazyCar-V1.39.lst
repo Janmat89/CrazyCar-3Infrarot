@@ -1,0 +1,271 @@
+   1               		.file	"CrazyCar-V1.39.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	autonomFahren
+  18               	autonomFahren:
+  19               	.LFB3:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 8091 0000 		lds r24,mod
+  25 0004 8130      		cpi r24,lo8(1)
+  26 0006 01F0      		breq .L4
+  27 0008 8230      		cpi r24,lo8(2)
+  28 000a 04F4      		brge .L7
+  29 000c 8823      		tst r24
+  30 000e 01F0      		breq .L3
+  31 0010 00C0      		rjmp .L2
+  32               	.L7:
+  33 0012 8230      		cpi r24,lo8(2)
+  34 0014 01F0      		breq .L5
+  35 0016 8930      		cpi r24,lo8(9)
+  36 0018 01F4      		brne .L2
+  37 001a 00C0      		rjmp .L10
+  38               	.L3:
+  39               	.LM3:
+  40 001c 80E0      		ldi r24,lo8(0)
+  41 001e 0E94 0000 		call ledPC3
+  42 0022 80E0      		ldi r24,lo8(0)
+  43 0024 0E94 0000 		call ledPC2
+  44 0028 0895      		ret
+  45               	.L4:
+  46               	.LM4:
+  47 002a 81E0      		ldi r24,lo8(1)
+  48 002c 0E94 0000 		call ledPC3
+  49 0030 80E0      		ldi r24,lo8(0)
+  50 0032 0E94 0000 		call ledPC2
+  51               	.LM5:
+  52 0036 0E94 0000 		call fahren1
+  53 003a 0895      		ret
+  54               	.L5:
+  55               	.LM6:
+  56 003c 80E0      		ldi r24,lo8(0)
+  57 003e 0E94 0000 		call ledPC3
+  58 0042 81E0      		ldi r24,lo8(1)
+  59 0044 0E94 0000 		call ledPC2
+  60               	.LM7:
+  61 0048 0E94 0000 		call fahren2
+  62 004c 0895      		ret
+  63               	.L10:
+  64               	.LM8:
+  65 004e 84E6      		ldi r24,lo8(100)
+  66 0050 0E94 0000 		call ledPC2_flash
+  67 0054 84E6      		ldi r24,lo8(100)
+  68 0056 60E0      		ldi r22,lo8(0)
+  69 0058 0E94 0000 		call ledPC3_flash
+  70               	.LM9:
+  71 005c 80E0      		ldi r24,lo8(0)
+  72 005e 90E0      		ldi r25,hi8(0)
+  73 0060 0E94 0000 		call fahr
+  74               	.LM10:
+  75 0064 1092 0000 		sts hspStart,__zero_reg__
+  76               	.LM11:
+  77 0068 1092 0000 		sts (abtastzeitMAX)+1,__zero_reg__
+  78 006c 1092 0000 		sts abtastzeitMAX,__zero_reg__
+  79               	.LM12:
+  80 0070 1092 0000 		sts historyDepthPointer,__zero_reg__
+  81 0074 0895      		ret
+  82               	.L2:
+  83               	.LM13:
+  84 0076 8EE1      		ldi r24,lo8(30)
+  85 0078 0E94 0000 		call ledPC2_flash
+  86 007c 8EE1      		ldi r24,lo8(30)
+  87 007e 61E0      		ldi r22,lo8(1)
+  88 0080 0E94 0000 		call ledPC3_flash
+  89 0084 0895      		ret
+  90               	.LFE3:
+  92               	.global	main
+  94               	main:
+  95               	.LFB2:
+  96               	.LM14:
+  97 0086 1F93      		push r17
+  98               	/* prologue: function */
+  99               	/* frame size = 0 */
+ 100               	.LM15:
+ 101 0088 0E94 0000 		call initMikroController
+ 102               	.LM16:
+ 103 008c 80E9      		ldi r24,lo8(912)
+ 104 008e 93E0      		ldi r25,hi8(912)
+ 105 0090 68E2      		ldi r22,lo8(808)
+ 106 0092 73E0      		ldi r23,hi8(808)
+ 107 0094 48EB      		ldi r20,lo8(696)
+ 108 0096 52E0      		ldi r21,hi8(696)
+ 109 0098 0E94 0000 		call initServo
+ 110               	.LM17:
+ 111 009c 8EE1      		ldi r24,lo8(30)
+ 112 009e 0E94 0000 		call initFahr
+ 113               	.LM18:
+ 114 00a2 80E0      		ldi r24,lo8(0)
+ 115 00a4 90E0      		ldi r25,hi8(0)
+ 116 00a6 0E94 0000 		call servo
+ 117               	.LM19:
+ 118 00aa 80E0      		ldi r24,lo8(0)
+ 119 00ac 90E0      		ldi r25,hi8(0)
+ 120 00ae 0E94 0000 		call fahr
+ 121               	.LM20:
+ 122 00b2 0E94 0000 		call s1
+ 123 00b6 182F      		mov r17,r24
+ 124 00b8 0E94 0000 		call s2
+ 125 00bc 880F      		lsl r24
+ 126 00be 810F      		add r24,r17
+ 127 00c0 8093 0000 		sts mod,r24
+ 128               	.LM21:
+ 129 00c4 0E94 0000 		call s4
+ 130 00c8 182F      		mov r17,r24
+ 131 00ca 8130      		cpi r24,lo8(1)
+ 132 00cc 01F4      		brne .L18
+ 133               	.LM22:
+ 134 00ce 81E0      		ldi r24,lo8(1)
+ 135 00d0 0E94 0000 		call ledPB1
+ 136               	.LM23:
+ 137 00d4 1092 0000 		sts historyDepthPointer,__zero_reg__
+ 138               	.LM24:
+ 139 00d8 1093 0000 		sts hspStart,r17
+ 140               	.L18:
+ 141               	.LM25:
+ 142 00dc 80E0      		ldi r24,lo8(0)
+ 143 00de 0E94 0000 		call adc
+ 144 00e2 9093 0000 		sts (analogwertL)+1,r25
+ 145 00e6 8093 0000 		sts analogwertL,r24
+ 146               	.LM26:
+ 147 00ea 81E0      		ldi r24,lo8(1)
+ 148 00ec 0E94 0000 		call adc
+ 149 00f0 9093 0000 		sts (analogwertR)+1,r25
+ 150 00f4 8093 0000 		sts analogwertR,r24
+ 151               	.LM27:
+ 152 00f8 82E0      		ldi r24,lo8(2)
+ 153 00fa 0E94 0000 		call adc
+ 154 00fe 9093 0000 		sts (analogwertV)+1,r25
+ 155 0102 8093 0000 		sts analogwertV,r24
+ 156               	.LM28:
+ 157 0106 87E0      		ldi r24,lo8(7)
+ 158 0108 0E94 0000 		call adc
+ 159 010c 9093 0000 		sts (analogwertAkku)+1,r25
+ 160 0110 8093 0000 		sts analogwertAkku,r24
+ 161               	.LM29:
+ 162 0114 8091 0000 		lds r24,analogwertL
+ 163 0118 9091 0000 		lds r25,(analogwertL)+1
+ 164 011c 66E4      		ldi r22,lo8(70)
+ 165 011e 0E94 0000 		call linearisierungAD
+ 166 0122 9093 0000 		sts (abstandlinks)+1,r25
+ 167 0126 8093 0000 		sts abstandlinks,r24
+ 168               	.LM30:
+ 169 012a 8091 0000 		lds r24,analogwertR
+ 170 012e 9091 0000 		lds r25,(analogwertR)+1
+ 171 0132 66E4      		ldi r22,lo8(70)
+ 172 0134 0E94 0000 		call linearisierungAD
+ 173 0138 9093 0000 		sts (abstandrechts)+1,r25
+ 174 013c 8093 0000 		sts abstandrechts,r24
+ 175               	.LM31:
+ 176 0140 8091 0000 		lds r24,analogwertV
+ 177 0144 9091 0000 		lds r25,(analogwertV)+1
+ 178 0148 64E6      		ldi r22,lo8(100)
+ 179 014a 0E94 0000 		call linearisierungAD
+ 180 014e 9093 0000 		sts (abstandvorne)+1,r25
+ 181 0152 8093 0000 		sts abstandvorne,r24
+ 182               	.LM32:
+ 183 0156 8091 0000 		lds r24,abtastzeit
+ 184 015a 9091 0000 		lds r25,(abtastzeit)+1
+ 185 015e 8436      		cpi r24,100
+ 186 0160 9105      		cpc r25,__zero_reg__
+ 187 0162 00F4      		brsh .+2
+ 188 0164 00C0      		rjmp .L18
+ 189               	.LM33:
+ 190 0166 1092 0000 		sts (abtastzeit)+1,__zero_reg__
+ 191 016a 1092 0000 		sts abtastzeit,__zero_reg__
+ 192               	.LM34:
+ 193 016e 8091 0000 		lds r24,datenSatzZaehler
+ 194 0172 9091 0000 		lds r25,(datenSatzZaehler)+1
+ 195 0176 0196      		adiw r24,1
+ 196 0178 9093 0000 		sts (datenSatzZaehler)+1,r25
+ 197 017c 8093 0000 		sts datenSatzZaehler,r24
+ 198               	.LM35:
+ 199 0180 0E94 0000 		call ledSchalterTest
+ 200               	.LM36:
+ 201 0184 0E94 0000 		call autonomFahren
+ 202               	.LM37:
+ 203 0188 2091 0000 		lds r18,historyDepthPointer
+ 204 018c 3327      		clr r19
+ 205 018e 27FD      		sbrc r18,7
+ 206 0190 3095      		com r19
+ 207 0192 8091 0000 		lds r24,hisDepth
+ 208 0196 90E0      		ldi r25,lo8(0)
+ 209 0198 2817      		cp r18,r24
+ 210 019a 3907      		cpc r19,r25
+ 211 019c 04F0      		brlt .L13
+ 212               	.LM38:
+ 213 019e 80E0      		ldi r24,lo8(0)
+ 214 01a0 90E0      		ldi r25,hi8(0)
+ 215 01a2 0E94 0000 		call fahr
+ 216               	.LM39:
+ 217 01a6 1092 0000 		sts mod,__zero_reg__
+ 218               	.L13:
+ 219               	.LM40:
+ 220 01aa 0E94 0000 		call datenspeichern
+ 221               	.LM41:
+ 222 01ae 0E94 0000 		call terminal_aktiv
+ 223               	.LM42:
+ 224 01b2 8091 0000 		lds r24,datenSatzZaehler
+ 225 01b6 9091 0000 		lds r25,(datenSatzZaehler)+1
+ 226 01ba 885E      		subi r24,lo8(-536)
+ 227 01bc 9D4F      		sbci r25,hi8(-536)
+ 228 01be 00F4      		brsh .+2
+ 229 01c0 00C0      		rjmp .L18
+ 230               	.LM43:
+ 231 01c2 1092 0000 		sts (datenSatzZaehler)+1,__zero_reg__
+ 232 01c6 1092 0000 		sts datenSatzZaehler,__zero_reg__
+ 233 01ca 00C0      		rjmp .L18
+ 234               	.LFE2:
+ 268               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 CrazyCar-V1.39.c
+C:\Users\MACHMA~1\AppData\Local\Temp/ccT1AjwD.s:2      *ABS*:0000003f __SREG__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccT1AjwD.s:3      *ABS*:0000003e __SP_H__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccT1AjwD.s:4      *ABS*:0000003d __SP_L__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccT1AjwD.s:5      *ABS*:00000034 __CCP__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccT1AjwD.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccT1AjwD.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\MACHMA~1\AppData\Local\Temp/ccT1AjwD.s:18     .text:00000000 autonomFahren
+C:\Users\MACHMA~1\AppData\Local\Temp/ccT1AjwD.s:94     .text:00000086 main
+
+UNDEFINED SYMBOLS
+mod
+ledPC3
+ledPC2
+fahren1
+fahren2
+ledPC2_flash
+ledPC3_flash
+fahr
+hspStart
+abtastzeitMAX
+historyDepthPointer
+initMikroController
+initServo
+initFahr
+servo
+s1
+s2
+s4
+ledPB1
+adc
+analogwertL
+analogwertR
+analogwertV
+analogwertAkku
+linearisierungAD
+abstandlinks
+abstandrechts
+abstandvorne
+abtastzeit
+datenSatzZaehler
+ledSchalterTest
+hisDepth
+datenspeichern
+terminal_aktiv
